@@ -14,10 +14,10 @@ import javax.persistence.*;
 public class Billet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long idBillet;
 
     @OneToOne
-    @JoinColumn(name = "id", nullable = false)
+    @JoinColumn(name="idReservation",referencedColumnName="idReservation")
     private Reservation idReservation;
 
     @Column(name = "moyenPaiment")

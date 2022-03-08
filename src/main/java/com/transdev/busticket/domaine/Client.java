@@ -8,7 +8,7 @@ public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long idClient;
 
     @Column(name = "nom")
     private String nom;
@@ -16,12 +16,12 @@ public class Client {
     @Column(name = "email")
     private String email;
 
-    public long getId() {
-        return id;
+    public long getIdClient() {
+        return idClient;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setIdClient(long id) {
+        this.idClient = id;
     }
 
     public String getNom() {

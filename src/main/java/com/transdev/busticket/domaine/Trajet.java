@@ -16,7 +16,7 @@ public class Trajet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long trajetId;
+    private long idTrajet;
 
     @Column(name = "nbPlace")
     private int nbPlace;
@@ -27,4 +27,8 @@ public class Trajet {
 
     @Column(name = "prix")
     private float prix;
+
+    @OneToOne
+    @JoinColumn(name="numeroBus",referencedColumnName="numeroBus", nullable = false)
+    private Bus numeroBus ;
 }

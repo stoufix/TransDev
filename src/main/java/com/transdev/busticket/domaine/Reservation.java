@@ -3,7 +3,6 @@ package com.transdev.busticket.domaine;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Setter
 @Getter
@@ -16,17 +15,14 @@ public class Reservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long idReservation;
+
+    @ManyToOne
+    @JoinColumn(name = "heureDepart",referencedColumnName="heureDepart", nullable = false)
+    private Trajet heureDepart ;
 
     @OneToOne
-    @JoinColumn(name = "heureDepart", nullable = false)
-    private Trajet dateDepart ;
-
-    @OneToOne
-    @JoinColumn(name = "id", nullable = false)
+    @JoinColumn(name="idClient",referencedColumnName="idClient", nullable = false)
     private Client idClient;
 
-    @OneToOne
-    @JoinColumn(name = "numero", nullable = false)
-    private Bus numeroBus ;
 }

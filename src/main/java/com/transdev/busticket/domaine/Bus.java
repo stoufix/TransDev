@@ -16,12 +16,12 @@ public class Bus {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long busId;
+    private long idBus;
 
-    @Column(unique=true,name = "numero",nullable = false)
-    private int numero ;
+    @Column(unique=true,name = "numeroBus",nullable = false)
+    private int numeroBus ;
 
     @ManyToOne(optional=false)
-    @JoinColumn(name="trajetId",referencedColumnName="trajetId")
+    @JoinColumn(name="idTrajet",referencedColumnName="idTrajet")
     private Trajet trajet ;
 }
