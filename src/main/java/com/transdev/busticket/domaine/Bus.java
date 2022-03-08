@@ -21,7 +21,7 @@ public class Bus {
     @Column(unique=true,name = "numeroBus",nullable = false)
     private int numeroBus ;
 
-    @ManyToOne(optional=false)
     @JoinColumn(name="idTrajet",referencedColumnName="idTrajet")
+    @OneToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
     private Trajet trajet ;
 }

@@ -46,20 +46,16 @@ class BusServiceImplTest {
     void findBusById() {
 
         Trajet trajetBuilder = Trajet.builder().heureDepart(new Date()).nbPlace(100).prix(35).build();
-        Bus busBuilder = Bus.builder().idBus(2).numeroBus(25).trajet(trajetBuilder).build();
-        Bus busBuilder2 = Bus.builder().idBus(3).numeroBus(25).trajet(trajetBuilder).build();
+        Bus busBuilder = Bus.builder().numeroBus(25).trajet(trajetBuilder).build();
+
         this.trajetRepository.save(trajetBuilder);
-        this.entityManager.merge(busBuilder);
-        this.entityManager.merge(busBuilder2);
+        this.entityManager.persist(busBuilder);
 
         //act
 
-        Bus bus = this.busRepository.findById(3L).get();
+        Bus buss = this.busRepository.findById(busBuilder.getIdBus()).get();
         //assert
-        assertNotNull(bus);
-
-        assertThat(bus.getNumeroBus()).isEqualTo(busBuilder.getNumeroBus());
-        assertThat(bus.getTrajet().getPrix()).isEqualTo(busBuilder.getTrajet().getPrix());
+        assertNotNull(buss);
     }
 
     @Test

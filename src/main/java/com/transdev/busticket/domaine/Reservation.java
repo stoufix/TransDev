@@ -3,6 +3,7 @@ package com.transdev.busticket.domaine;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Setter
 @Getter
@@ -17,9 +18,9 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long idReservation;
 
-    @ManyToOne
+    @OneToMany
     @JoinColumn(name = "heureDepart",referencedColumnName="heureDepart", nullable = false)
-    private Trajet heureDepart ;
+    private List<Trajet> trajet ;
 
     @OneToOne
     @JoinColumn(name="idClient",referencedColumnName="idClient", nullable = false)
