@@ -28,7 +28,7 @@ public class Trajet {
     @Column(name = "prix")
     private float prix;
 
-    @OneToOne
+    /*@OneToOne
     @JoinColumn(name="numeroBus",referencedColumnName="numeroBus", nullable = false)
-    private Bus numeroBus ;
+    private Bus numeroBus ;*/
 }

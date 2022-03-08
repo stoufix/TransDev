@@ -1,7 +1,14 @@
 package com.transdev.busticket.domaine;
 
+import lombok.*;
+
 import javax.persistence.*;
 
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "client")
 public class Client {
@@ -15,28 +22,4 @@ public class Client {
 
     @Column(name = "email")
     private String email;
-
-    public long getIdClient() {
-        return idClient;
-    }
-
-    public void setIdClient(long id) {
-        this.idClient = id;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }
