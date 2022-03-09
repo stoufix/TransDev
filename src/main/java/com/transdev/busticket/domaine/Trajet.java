@@ -1,5 +1,6 @@
 package com.transdev.busticket.domaine;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.persistence.*;
@@ -21,8 +22,8 @@ public class Trajet {
     @Column(name = "nbPlace")
     private int nbPlace;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "heureDepart")
+    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
     private Date heureDepart;
 
     @Column(name = "prix")

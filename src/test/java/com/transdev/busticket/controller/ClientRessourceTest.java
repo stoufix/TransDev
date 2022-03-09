@@ -4,21 +4,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BusControllerTest {
+class ClientRessourceTest {
 
     @Test
-    void getAllBus() {
+    void getAllClients() {
     }
 
     @Test
-    void creerBus() {
-    }
-
-    @Test
-    void trouverBusParId() {
-    }
-
-    @Test
-    void supprimerBus() {
+    void createClient() {
     }
 }

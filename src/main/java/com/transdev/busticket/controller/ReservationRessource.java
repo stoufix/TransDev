@@ -1,6 +1,7 @@
 package com.transdev.busticket.controller;
 
 import com.transdev.busticket.domaine.Reservation;
+import com.transdev.busticket.exception.MoyenPaimentNonValideException;
 import com.transdev.busticket.exception.RessourceNotFound;
 import com.transdev.busticket.modele.MoyenPaiement;
 import com.transdev.busticket.service.ReservationService;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class ReservationController {
+public class ReservationRessource {
 
     @Autowired
    ReservationService reservationService;
@@ -38,7 +39,12 @@ public class ReservationController {
         this.reservationService.supprimerReservation(reservationId);
     }
     @PostMapping("/payerReservation/{reservationId}")
-    ResponseEntity<Boolean> payerReservation(@PathVariable long reservationId ,@RequestBody MoyenPaiement moyenPaiement){
+    ResponseEntity<Boolean> payerReservation(@PathVariable long reservationId ,@RequestBody MoyenPaiement moyenPaiement) throws MoyenPaimentNonValideException {
+        boolean moyenPaimentValide = moyenPaiement instanceof MoyenPaiement;
+        if(!moyenPaimentValide){
+
+            throw new MoyenPaimentNonValideException("moyen paiment non valide");
+        }
         return ResponseEntity.ok(this.reservationService.payerReservation(reservationId,moyenPaiement));
 
     }

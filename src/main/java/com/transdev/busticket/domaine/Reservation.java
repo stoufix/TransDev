@@ -18,8 +18,8 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long idReservation;
 
-    @OneToMany
-    @JoinColumn(name = "heureDepart",referencedColumnName="heureDepart", nullable = false)
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name = "idTrajet")
     private List<Trajet> trajet ;
 
     @OneToOne
