@@ -5,6 +5,7 @@ import com.transdev.busticket.domaine.Reservation;
 import com.transdev.busticket.domaine.Trajet;
 import com.transdev.busticket.exception.RessourceNotFound;
 import com.transdev.busticket.modele.MoyenPaiement;
+import com.transdev.busticket.repository.BilletRepository;
 import com.transdev.busticket.repository.ReservationRepository;
 import com.transdev.busticket.service.BilletService;
 import com.transdev.busticket.service.ReservationService;
@@ -23,7 +24,7 @@ public class ReservationServiceImpl implements ReservationService {
     @Autowired
     ReservationRepository reservationRepository ;
     @Autowired
-    BilletService billetService;
+    BilletRepository billetRepository;
     @Override
     public List<Reservation> getAllReservation() {
         return this.reservationRepository.findAll();
@@ -58,7 +59,7 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public Billet recupererBilletFacture(long idReservation) throws RessourceNotFound {
-        return  this.billetService.recupererBilletParIdReservation(idReservation);
+        return  this.billetRepository.GetBilletParIdFacture(idReservation);
 
     }
 
