@@ -1,10 +1,12 @@
 package com.transdev.busticket.service.impl;
 
+import com.transdev.busticket.domaine.Billet;
 import com.transdev.busticket.domaine.Reservation;
 import com.transdev.busticket.domaine.Trajet;
 import com.transdev.busticket.exception.RessourceNotFound;
 import com.transdev.busticket.modele.MoyenPaiement;
 import com.transdev.busticket.repository.ReservationRepository;
+import com.transdev.busticket.service.BilletService;
 import com.transdev.busticket.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,8 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Autowired
     ReservationRepository reservationRepository ;
+    @Autowired
+    BilletService billetService;
     @Override
     public List<Reservation> getAllReservation() {
         return this.reservationRepository.findAll();
@@ -51,6 +55,13 @@ public class ReservationServiceImpl implements ReservationService {
             throw new RessourceNotFound("pas de bus dans la BD" + idReservation);
         }
     }
+
+    @Override
+    public Billet recupererBilletFacture(long idReservation) throws RessourceNotFound {
+        return  this.billetService.recupererBilletParIdReservation(idReservation);
+
+    }
+
     @Override
     public boolean payerReservation(long idReservation, MoyenPaiement moyenPaiment) {
         Optional<Reservation> reservationBD = this.reservationRepository.findById(idReservation);
